@@ -7,29 +7,42 @@ body{
 .todo{
     display:flex;
     justify-content: center;
+    margin: 1em;
     
     
 }
 .bienvenido {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction:column;
     justify-content: center;
     width:60%;
+    
+    
    
 }
 
 h1 {
     color: #333;
+    margin-bottom: 1em;
 }
 
 img {
     max-width: 100%;
     height: auto;
+    margin-bottom: 1em;
 }
 
 .bienvenido button{
     margin-top: 1em;
+    background-color: #176B87;
+    color:white;
+  font-size: x-large;
+}
+.bienvenido button:hover{
+    cursor: pointer;
+    border-color: #176B87;
+
 }
 
 
@@ -38,14 +51,20 @@ img {
    
    width:10%;
   display: none;
+  
     
 }
 
 .botones button{
-   font-size: large;
-   width:80%;
-   height:4em;
-   margin-bottom: 2em;
+ 
+    width: 100%;
+    height: 6em;
+    border-color: #64CCC5 ;
+   margin-bottom: 1em;
 
   
+}
+.botones button:hover{
+    /* background-color:#DAFFFB ; */
+    background-color: #64CCC5;    
 }
