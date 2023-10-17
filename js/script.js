@@ -2,6 +2,9 @@ var nombre;
 var numRandom;
 var texto;
 var intervalId;
+var labelInput = document.getElementById("input");
+
+var input = document.querySelector("input");
 var imgQuery = document.querySelector("img");
 var alt = document.getElementById("textoAlt");
 var imagenes = [
@@ -58,21 +61,38 @@ var colores = [
 ];
 // boton para agregar nombre en el h1 y mostrar lo demas
 document.getElementById("bienvenido").onclick = function () {
-  nombre = prompt("Ingrese su nombre");
+  if (input.value == "") {
+    labelInput.style.display = "block";
+
+  } else {
+    labelInput.style.display = "none";
+  document.getElementById("botones").style.display = "block";
+
+  }
+
+};
+document.getElementById("enviar").onclick = function(){
+ 
+  var nombre = input.value;
   var titulo = document.querySelector("h1");
   titulo.innerHTML = "Bienvenido " + nombre + "!";
+  labelInput.style.display = "none";
   document.getElementById("botones").style.display = "block";
-};
+  document.getElementById("bienvenido").style.display = "none";
+}
 //funcion para obtener imagen random y agregarla al tag
 function imagenRandom() {
   numRandom = Math.round(Math.random() * (imagenes.length - 1));
- // console.log(numRandom);
+  // console.log(numRandom);
   imgQuery.setAttribute("src", imagenes[numRandom]);
 }
 // boton para imagenes random cada 3 segs
 document.getElementById("randomIntervalo").onclick = function () {
   intervalId = setInterval(function () {
     imagenRandom();
+    if (imagenes[numRandom][1] == "") {
+      alt.style.display = "none";
+    }
   }, 3000);
 };
 // boton para imagenes random
@@ -87,17 +107,14 @@ document.getElementById("cambiarImagen").onclick = function () {
 document.getElementById("agregarTexto").onclick = function () {
   texto = prompt("Ingresar texto alternativo");
   imagenes[numRandom].splice(1, 1, texto);
- // console.log(imagenes[numRandom][1]);
+  // console.log(imagenes[numRandom][1]);
   imgQuery.setAttribute("alt", imagenes[numRandom][1]);
 
- // console.log(imagenes[numRandom]);
+  // console.log(imagenes[numRandom]);
 };
 // click en imagen y aparece el alt
 imgQuery.onclick = function () {
-  if (
-    alt.style.display === "none" &&
-    imagenes[numRandom][1] != ""
-  ) {
+  if (alt.style.display === "none" && imagenes[numRandom][1] != "") {
     alt.style.display = "block";
     alt.innerHTML = imagenes[numRandom][1];
   } else if (imagenes[numRandom][1] == "") {
@@ -113,7 +130,7 @@ document.getElementById("costumizar").onclick = function () {
   for (var i = 0; i < colores.length; i++) {
     if (colores[i][0] === color) {
       hexa = colores[i][1];
-     // console.log(hexa);
+      // console.log(hexa);
     }
   }
   if (hexa) {

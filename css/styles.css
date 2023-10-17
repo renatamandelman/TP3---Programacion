@@ -36,6 +36,9 @@ img {
 img:hover{
     cursor:pointer;
 }
+#input {
+    margin-bottom : 1em;
+}
 
 .bienvenido button{
     margin-top: 1em;
