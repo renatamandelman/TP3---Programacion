@@ -2,6 +2,8 @@ var nombre;
 var numRandom;
 var texto;
 var intervalId;
+var imgQuery = document.querySelector("img");
+var alt = document.getElementById("textoAlt");
 var imagenes = [
   [
     "https://images.pagina12.com.ar/styles/focal_3_2_960x640/public/2022-05/508136-doberman_0.jpg?h=4bf1c8f5&itok=f0a4DTc8",
@@ -64,8 +66,8 @@ document.getElementById("bienvenido").onclick = function () {
 //funcion para obtener imagen random y agregarla al tag
 function imagenRandom() {
   numRandom = Math.round(Math.random() * (imagenes.length - 1));
-  console.log(numRandom);
-  document.querySelector("img").setAttribute("src", imagenes[numRandom]);
+ // console.log(numRandom);
+  imgQuery.setAttribute("src", imagenes[numRandom]);
 }
 // boton para imagenes random cada 3 segs
 document.getElementById("randomIntervalo").onclick = function () {
@@ -78,30 +80,30 @@ document.getElementById("cambiarImagen").onclick = function () {
   clearInterval(intervalId);
   imagenRandom();
   if (imagenes[numRandom][1] == "") {
-    document.getElementById("textoAlt").style.display = "none";
+    alt.style.display = "none";
   }
 };
 //boton para agregar texto al alt
 document.getElementById("agregarTexto").onclick = function () {
   texto = prompt("Ingresar texto alternativo");
   imagenes[numRandom].splice(1, 1, texto);
-  console.log(imagenes[numRandom][1]);
-  document.querySelector("img").setAttribute("alt", imagenes[numRandom][1]);
+ // console.log(imagenes[numRandom][1]);
+  imgQuery.setAttribute("alt", imagenes[numRandom][1]);
 
-  console.log(imagenes[numRandom]);
+ // console.log(imagenes[numRandom]);
 };
 // click en imagen y aparece el alt
-document.querySelector("img").onclick = function () {
+imgQuery.onclick = function () {
   if (
-    document.getElementById("textoAlt").style.display === "none" &&
+    alt.style.display === "none" &&
     imagenes[numRandom][1] != ""
   ) {
-    document.getElementById("textoAlt").style.display = "block";
-    document.getElementById("textoAlt").innerHTML = imagenes[numRandom][1];
+    alt.style.display = "block";
+    alt.innerHTML = imagenes[numRandom][1];
   } else if (imagenes[numRandom][1] == "") {
     alert("No hay una descripción para esta foto");
-  } else if (document.getElementById("textoAlt").style.display === "block") {
-    document.getElementById("textoAlt").style.display = "none";
+  } else if (alt.style.display === "block") {
+    alt.style.display = "none";
   }
 };
 // costumizar boton
@@ -111,20 +113,19 @@ document.getElementById("costumizar").onclick = function () {
   for (var i = 0; i < colores.length; i++) {
     if (colores[i][0] === color) {
       hexa = colores[i][1];
-      console.log(hexa);
+     // console.log(hexa);
     }
   }
-  console.log(hexa);
   if (hexa) {
-    document.querySelector("img").style.border = "5px solid #" + hexa;
-    document.querySelector("img").style.borderRadius = "2em";
+    imgQuery.style.border = "5px solid #" + hexa;
+    imgQuery.style.borderRadius = "2em";
   } else {
-    document.querySelector("img").style.border = "5px solid #000000";
-    document.querySelector("img").style.borderRadius = "2em";
+    imgQuery.style.border = "5px solid #000000";
+    imgQuery.style.borderRadius = "2em";
   }
 };
 //deshacer costumizacion de la imagen
 document.getElementById("deshacer").onclick = function () {
-  document.querySelector("img").style.border = "none";
-  document.querySelector("img").style.borderRadius = "0";
+  imgQuery.style.border = "none";
+  imgQuery.style.borderRadius = "0";
 };
