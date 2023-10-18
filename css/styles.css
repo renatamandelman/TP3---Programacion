@@ -31,7 +31,8 @@ img {
     width:50%;
     height: 50%;
     margin-bottom: 1em;
-   
+    transition: border 0.5s ease, border-radius 0.5s ease;
+    
 }
 img:hover{
     cursor:pointer;
@@ -74,4 +75,29 @@ img:hover{
 .botones button:hover{
     /* background-color:#DAFFFB ; */
     background-color: #64CCC5;    
+}
+
+
+
+
+form,
+input {
+  position: relative;
+} 
+
+.container {
+  display: flex;
+  align-items: center; 
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  
+}
+
+.enviar {
+  position: relative;
+  left:1em;
+  font-size:0.5em;
 }

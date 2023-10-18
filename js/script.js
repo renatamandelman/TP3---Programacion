@@ -1,6 +1,5 @@
 var nombre;
 var numRandom;
-var texto;
 var intervalId;
 var labelInput = document.getElementById("input");
 
@@ -78,13 +77,13 @@ document.getElementById("enviar").onclick = function(){
   titulo.innerHTML = "Bienvenido " + nombre + "!";
   labelInput.style.display = "none";
   document.getElementById("botones").style.display = "block";
-  document.getElementById("bienvenido").style.display = "none";
+  //document.getElementById("bienvenido").style.display = "none";
 }
 //funcion para obtener imagen random y agregarla al tag
 function imagenRandom() {
   numRandom = Math.round(Math.random() * (imagenes.length - 1));
   // console.log(numRandom);
-  imgQuery.setAttribute("src", imagenes[numRandom]);
+  imgQuery.setAttribute("src", imagenes[numRandom][0]);
 }
 // boton para imagenes random cada 3 segs
 document.getElementById("randomIntervalo").onclick = function () {
@@ -105,10 +104,9 @@ document.getElementById("cambiarImagen").onclick = function () {
 };
 //boton para agregar texto al alt
 document.getElementById("agregarTexto").onclick = function () {
-  texto = prompt("Ingresar texto alternativo");
-  imagenes[numRandom].splice(1, 1, texto);
+  imagenes [numRandom][1] = prompt("Ingresar texto alternativo");
   // console.log(imagenes[numRandom][1]);
-  imgQuery.setAttribute("alt", imagenes[numRandom][1]);
+  imgQuery.setAttribute("alt", imagenes [numRandom][1]);
 
   // console.log(imagenes[numRandom]);
 };
