@@ -2,7 +2,6 @@ var nombre;
 var numRandom;
 var intervalId;
 var labelInput = document.getElementById("input");
-
 var input = document.querySelector("input");
 var imgQuery = document.querySelector("img");
 var alt = document.getElementById("textoAlt");
@@ -77,7 +76,6 @@ document.getElementById("enviar").onclick = function(){
   titulo.innerHTML = "Bienvenido " + nombre + "!";
   labelInput.style.display = "none";
   document.getElementById("botones").style.display = "block";
-  //document.getElementById("bienvenido").style.display = "none";
 }
 //funcion para obtener imagen random y agregarla al tag
 function imagenRandom() {
@@ -91,6 +89,9 @@ document.getElementById("randomIntervalo").onclick = function () {
     imagenRandom();
     if (imagenes[numRandom][1] == "") {
       alt.style.display = "none";
+    } else{
+      alt.innerHTML = imagenes[numRandom][1];
+      alt.style.display="block"
     }
   }, 3000);
 };
